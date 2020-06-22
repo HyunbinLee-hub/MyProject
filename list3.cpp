@@ -1,63 +1,63 @@
 #include <iostream>
-#include "list.h"
+#include "list3.h"
 using namespace std;
 
 void LinkedList::Append(int data)
 {
 
-	Node *newNode = new Node;	// »õ·Î Ãß°¡ÇÑ ³ëµå
+	Node *newNode = new Node;	// ìƒˆë¡œ ì¶”ê°€í•œ ë…¸ë“œ
 
 	newNode->data = data;
 
-	if (head == NULL) {			// Ã¹¹øÂ° ³ëµå »ý¼º
-		head = newNode;			// ³ëµå Æ÷ÀÎÅÍ head´Â Ã¹¹øÂ°·Î »ý¼ºµÈ ³ëµå¸¦ °¡¸®Å²´Ù.
+	if (head == NULL) {			// ì²«ë²ˆì§¸ ë…¸ë“œ ìƒì„±
+		head = newNode;			// ë…¸ë“œ í¬ì¸í„° headëŠ” ì²«ë²ˆì§¸ë¡œ ìƒì„±ëœ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
 	}
-	else {						// ¿¬°á ¸®½ºÆ®ÀÇ ³¡¿¡ ´ÙÀ½ ³ëµå »ý¼º
-		newNode->prev = tail;	// »õ·Î »ý¼ºµÈ ³ëµåÀÇ ÀÌÀü ³ëµå = ¿¬°á¸®½ºÆ®ÀÇ ³¡ ³ëµå
-		tail->next = newNode;	// ¿¬°á¸®½ºÆ®ÀÇ ³¡ ³ëµåÀÇ ´ÙÀ½ ³ëµå·Î »õ ³ëµå Ãß°¡
+	else {						// ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ëì— ë‹¤ìŒ ë…¸ë“œ ìƒì„±
+		newNode->prev = tail;	// ìƒˆë¡œ ìƒì„±ëœ ë…¸ë“œì˜ ì´ì „ ë…¸ë“œ = ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ë ë…¸ë“œ
+		tail->next = newNode;	// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ë ë…¸ë“œì˜ ë‹¤ìŒ ë…¸ë“œë¡œ ìƒˆ ë…¸ë“œ ì¶”ê°€
 	}
-	tail = newNode;				// ³ëµå Æ÷ÀÎÅÍ tailÀº Ç×»ó »õ·Î »ý¼ºµÈ ³ëµå¸¦ °¡¸®Å²´Ù.
+	tail = newNode;				// ë…¸ë“œ í¬ì¸í„° tailì€ í•­ìƒ ìƒˆë¡œ ìƒì„±ëœ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
 
 	return;
 }
 
-void LinkedList::Prepend(int data)		// ¿¬°á ¸®½ºÆ®ÀÇ Ã³À½¿¡ »õ ³ëµå »ý¼º
+void LinkedList::Prepend(int data)		// ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ì²˜ìŒì— ìƒˆ ë…¸ë“œ ìƒì„±
 {
 	Node *newNode = new Node;
 
-	newNode->data = data;		// »õ·Î »ý¼ºÇÑ ³ëµå¿¡ µ¥ÀÌÅÍ ÀúÀå
+	newNode->data = data;		// ìƒˆë¡œ ìƒì„±í•œ ë…¸ë“œì— ë°ì´í„° ì €ìž¥
 
-	if (head == NULL) {			// Ã¹¹øÂ° ³ëµå »ý¼º
-		tail = newNode;			// ³ëµå Æ÷ÀÎÅÍ tailÀº Ã¹¹øÂ°·Î »ý¼ºµÈ ³ëµå¸¦ °¡¸®Å²´Ù.
+	if (head == NULL) {			// ì²«ë²ˆì§¸ ë…¸ë“œ ìƒì„±
+		tail = newNode;			// ë…¸ë“œ í¬ì¸í„° tailì€ ì²«ë²ˆì§¸ë¡œ ìƒì„±ëœ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
 	}
-	else {						// ¿¬°á ¸®½ºÆ®ÀÇ Ã¹¹øÂ° ³ëµå ¾Õ¿¡ »õ ³ëµå »ý¼º
-		newNode->next = head;	// »õ·Î »ý¼ºÇÑ ³ëµåÀÇ ´ÙÀ½ ³ëµå = ¿¬°á¸®½ºÆ®ÀÇ Ã¹ ³ëµå
-		head->prev = newNode;	// ¿¬°á¸®½ºÆ®ÀÇ Ã¹ ³ëµåÀÇ ÀÌÀü ³ëµå·Î »õ ³ëµå Ãß°¡
+	else {						// ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ì²«ë²ˆì§¸ ë…¸ë“œ ì•žì— ìƒˆ ë…¸ë“œ ìƒì„±
+		newNode->next = head;	// ìƒˆë¡œ ìƒì„±í•œ ë…¸ë“œì˜ ë‹¤ìŒ ë…¸ë“œ = ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ì²« ë…¸ë“œ
+		head->prev = newNode;	// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ì²« ë…¸ë“œì˜ ì´ì „ ë…¸ë“œë¡œ ìƒˆ ë…¸ë“œ ì¶”ê°€
 	}
-	head = newNode;				// ³ëµå Æ÷ÀÎÅÍ head´Â Ç×»ó »õ·Î »ý¼ºµÈ ³ëµå¸¦ °¡¸®Å²´Ù.
+	head = newNode;				// ë…¸ë“œ í¬ì¸í„° headëŠ” í•­ìƒ ìƒˆë¡œ ìƒì„±ëœ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
 }
 
 int LinkedList::Length(void) {
 
-	Node *currentNode = head;	// ÇöÀç ³ëµå´Â head°¡ °¡¸®Å°´Â ³ëµå¿Í µ¿ÀÏ
-	int count = 0;				// ³ëµåÀÇ °³¼ö ÀúÀå º¯¼ö, 0À¸·Î ÃÊ±âÈ­
+	Node *currentNode = head;	// í˜„ìž¬ ë…¸ë“œëŠ” headê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œì™€ ë™ì¼
+	int count = 0;				// ë…¸ë“œì˜ ê°œìˆ˜ ì €ìž¥ ë³€ìˆ˜, 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
 	while (currentNode != NULL) {
 		count++;
 		currentNode = currentNode->next;
-	}	// ¿¬°á¸®½ºÆ®¿¡¼­ ÇöÀç ³ëµå¿¡ ´ëÇÑ Æ÷ÀÎÅÍ¸¦ ¼ø¼­´ë·Î ÀÌµ¿½ÃÅ°¸é¼­ ³ëµå °³¼ö¸¦ count¿¡ ÀúÀå
+	}	// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ìž¬ ë…¸ë“œì— ëŒ€í•œ í¬ì¸í„°ë¥¼ ìˆœì„œëŒ€ë¡œ ì´ë™ì‹œí‚¤ë©´ì„œ ë…¸ë“œ ê°œìˆ˜ë¥¼ countì— ì €ìž¥
 
 	return count;
 }
 
-void LinkedList::Print(void) {				// ¿¬°á ¸®½ºÆ®ÀÇ µ¥ÀÌÅÍ¸¦ ¼ø¼­´ë·Î Ãâ·Â
+void LinkedList::Print(void) {				// ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ë°ì´í„°ë¥¼ ìˆœì„œëŒ€ë¡œ ì¶œë ¥
 
-	Node *currentNode = head;				// ¿¬°á¸®½ºÆ®ÀÇ Ã³À½ºÎÅÍ ½ÃÀÛ
+	Node *currentNode = head;				// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ì²˜ìŒë¶€í„° ì‹œìž‘
 
 	while (currentNode != NULL) {
-		cout << currentNode->data << " ";	// ÇöÀç ³ëµå¿¡ ÀúÀåµÈ °ª Ãâ·Â
-		currentNode = currentNode->next;	// ÇöÀç ³ëµåÀÇ ´ÙÀ½ ³ëµå·Î ÀÌµ¿
-	}	// ¿¬°á¸®½ºÆ®ÀÇ °¢ ³ëµå¿¡ ÀúÀåµÈ °ªÀ» ¼ø¼­´ë·Î Ãâ·Â
+		cout << currentNode->data << " ";	// í˜„ìž¬ ë…¸ë“œì— ì €ìž¥ëœ ê°’ ì¶œë ¥
+		currentNode = currentNode->next;	// í˜„ìž¬ ë…¸ë“œì˜ ë‹¤ìŒ ë…¸ë“œë¡œ ì´ë™
+	}	// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ê° ë…¸ë“œì— ì €ìž¥ëœ ê°’ì„ ìˆœì„œëŒ€ë¡œ ì¶œë ¥
 	cout << endl;
 
 	return;
@@ -65,11 +65,11 @@ void LinkedList::Print(void) {				// ¿¬°á ¸®½ºÆ®ÀÇ µ¥ÀÌÅÍ¸¦ ¼ø¼­´ë·Î Ãâ·Â
 
 void LinkedList::PrintReverse(void) {
 
-	Node *currentNode = tail;				// ¿¬°á¸®½ºÆ®ÀÇ ¸¶Áö¸·ºÎÅÍ ½ÃÀÛ
+	Node *currentNode = tail;				// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ë§ˆì§€ë§‰ë¶€í„° ì‹œìž‘
 
 	while (currentNode != NULL) {
-		cout << currentNode->data << " ";	// ÇöÀç ³ëµå¿¡ ÀúÀåµÈ °ª Ãâ·Â
-		currentNode = currentNode->prev;	// ÇöÀç ³ëµåÀÇ ÀÌÀü ³ëµå·Î ÀÌµ¿	
-	}	// ¿¬°á¸®½ºÆ®ÀÇ °¢ ³ëµå¿¡ ÀúÀåµÈ °ªÀ» ¿ª¼øÀ¸·Î Ãâ·Â
+		cout << currentNode->data << " ";	// í˜„ìž¬ ë…¸ë“œì— ì €ìž¥ëœ ê°’ ì¶œë ¥
+		currentNode = currentNode->prev;	// í˜„ìž¬ ë…¸ë“œì˜ ì´ì „ ë…¸ë“œë¡œ ì´ë™	
+	}	// ì—°ê²°ë¦¬ìŠ¤íŠ¸ì˜ ê° ë…¸ë“œì— ì €ìž¥ëœ ê°’ì„ ì—­ìˆœìœ¼ë¡œ ì¶œë ¥
 	cout << endl;
 }
